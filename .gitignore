@@ -1,0 +1,8 @@
+*.swp
+*~
+*build/
+*.DS_Store
+*__pycache__/
+*env/
+*test_env/
+*egg-info/
