@@ -19,7 +19,9 @@ import sys
 from . import utils
 
 def main():
-  args = utils._parse_args(sys.arv[1:])
+  args = utils._parse_args(sys.arv[1:],
+                          epilog=_epilog,
+                          description=__doc__)
 
   raise NotImplementedError
   return 0
