@@ -16,15 +16,15 @@ python -m pmedpc <filename>
 
 import sys
 
-from . import utils
+import utils
 
 def main():
-  args = utils._parse_args(sys.arv[1:],
+  args = utils._parse_args(sys.argv[1:],
                           epilog=_epilog,
                           description=__doc__)
-
-  raise NotImplementedError
-  return 0
+  args_1 = sys.argv[1]
+  print(args_1)
+  
 
 
 main()
