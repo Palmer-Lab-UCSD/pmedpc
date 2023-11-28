@@ -15,8 +15,8 @@ python -m pmedpc <filename>
 """
 
 import sys
-import utils
-import extract_medpc
+from . import utils
+from . import extract_medpc
 import numpy as np
 from datetime import datetime
 
@@ -78,7 +78,8 @@ def main():
     if len(col) < 2: continue
     print(col, ":", list(np.unique(df[col])))
   
-  filename = args_1 + "_" + extract_medpc.get_timestamp() + ".csv"
+  # filename = args_1 + "_" + extract_medpc.get_timestamp() + ".csv"
+  filename = f"{args_1}_{extract_medpc.get_timestamp()}.csv"
   print("saved to", filename)
   df.to_csv(filename, index = False)
 
