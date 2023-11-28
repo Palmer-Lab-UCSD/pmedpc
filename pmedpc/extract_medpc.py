@@ -2,7 +2,9 @@
 # coding: utf-8
 
 import pandas as pd
+import numpy as np
 import os
+from datetime import datetime
 
 class MedPC: 
     def __init__(self, files: list): 
@@ -34,6 +36,7 @@ class MedPC:
         
         data = pd.DataFrame()
         for file in files: 
+            print(file)
             with open(file, errors = "ignore") as f: 
                 lines = f.readlines()
 
@@ -71,6 +74,7 @@ class MedPC:
                     for k in dictionary.keys(): 
                         if k not in list(data.columns): 
                             data[k] = ""
+                    # data = pd.concat([data, pd.DataFrame(dictionary)], ignore_index = True)
                     data = data.append(dictionary, ignore_index = True)
                     subject_num += 1
 
@@ -122,6 +126,7 @@ class MedPC:
                 for k in dictionary.keys(): 
                     if k not in list(data.columns): 
                         data[k] = ""
+                # data = pd.concat([data, pd.DataFrame(dictionary)], ignore_index = True)
                 data = data.append(dictionary, ignore_index = True)
 
         # Fixing columns
