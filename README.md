@@ -7,6 +7,6 @@ python -m pip install --user git+https://github.com/Palmer-Lab-UCSD/pmedpc.git@v
 
 # EXAMPLES
 
-python pmedpc <file_path>
+python -m pmedpc <file_path>
 
-python pmedpc ALCOHOLGWAS_C03_R1_FEMALES_DAY01
+python -m pmedpc ALCOHOLGWAS_C03_R1_FEMALES_DAY01
