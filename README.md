@@ -5,6 +5,10 @@ A tool to extract data from MedPC files and write to csv.
 
 python -m pip install --user git+https://github.com/Palmer-Lab-UCSD/pmedpc.git@v0.0.1
 
+python -m pip update?
+
+add folder update
+
 # EXAMPLES
 
 python -m pmedpc <file_path>

@@ -11,6 +11,9 @@ def _parse_args(args, **kwargs):
 
   parser.add_argument("filename",
                       type=str,
-                      help="MedPC file to be parsed.")
+                      help="MedPC file to be parsed")
+  # parser.add_argument('-f', '--file')
+  # parser.add_argument('-d', '--directory')
+  # parser.add_argument('-o', '--stdout')
 
   return parser.parse_args()

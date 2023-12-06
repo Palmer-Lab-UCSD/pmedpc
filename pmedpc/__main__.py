@@ -69,6 +69,29 @@ def main():
   #         values.append("")
           values.append(val.replace(" ", "_"))
   df["experiment"] = values
+
+  # Getting saving first value as separate column
+  # a, l, r, w
+  for col in ["a", "l", "r", "w"]: 
+    if col not in list(df.columns): 
+        continue
+    for i in range(31): 
+        values = []
+        for val in df[col]: 
+            val = val.split(",")
+            if len(val) != 31: 
+                # Add error statement
+                break
+            val = val[0].replace("[", "")
+            print(val)
+            values.append(val)
+        # df[col + "_" + str(i)] = values
+        if i == 0: 
+            df[f"{col}_total"] = values
+        else: 
+            df[f"{col}_{i}"] = values
+
+
   print()
 
   # Printing File Summary
