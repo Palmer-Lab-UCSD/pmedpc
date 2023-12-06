@@ -15,6 +15,7 @@ python -m pmedpc <filename>
 """
 
 import sys
+import os
 from . import utils
 from . import extract_medpc
 import numpy as np
@@ -23,14 +24,23 @@ from datetime import datetime
 def main():
   # Reading in arguments
   args = utils._parse_args(sys.argv[1:],
-                          epilog=_epilog,
-                          description=__doc__)
+                           epilog=_epilog,
+                           description=__doc__)
+  
   args_1 = sys.argv[1] # filename
+  print(args_1)
+
+  if os.path.isfile(args_1): 
+    files = [args_1]
+    # print(files)
+  else: 
+    files = [f"{args_1}/{file}" for file in os.listdir(args_1)]
 
   ### Extracting data from MedPC files ###
-  data = extract_medpc.MedPC([args_1])
+  data = extract_medpc.MedPC(files)
   data.medpc_to_df()
   df = data.getRaw().astype(str)
+  print(df.shape)
 
   ### Minor edits to dataframe ###
   # Adding cohort from filename
@@ -92,12 +102,12 @@ def main():
 
   print()
 
-  # Printing File Summary
-  print("FILE SUMMARY")
-  print("columns found:", list(df.columns))
-  for col in df.columns: 
-    if len(col) < 2: continue
-    print(col, ":", list(np.unique(df[col])))
+#   # Printing File Summary
+#   print("FILE SUMMARY")
+#   print("columns found:", list(df.columns))
+#   for col in df.columns: 
+#     if len(col) < 2: continue
+#     print(col, ":", list(np.unique(df[col])))
   
   # filename = args_1 + "_" + extract_medpc.get_timestamp() + ".csv"
   filename = f"{args_1}_{extract_medpc.get_timestamp()}.csv"
