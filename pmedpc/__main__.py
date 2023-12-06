@@ -83,13 +83,11 @@ def main():
                 # Add error statement
                 break
             val = val[0].replace("[", "")
-            print(val)
             values.append(val)
-        # df[col + "_" + str(i)] = values
         if i == 0: 
             df[f"{col}_total"] = values
         else: 
-            df[f"{col}_{i}"] = values
+            df[f"{col}_bin{i}"] = values
 
 
   print()
